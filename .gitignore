@@ -1,4 +1,5 @@
 static/.weel-known
+package-lock.json
 
 # Logs
 logs
