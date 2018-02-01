@@ -33,6 +33,6 @@ dbCon.on('open', function() {
 
     app.use('/', require('./routes'));
 
-    server.listen(8000);
+    server.listen(8080);
     console.log("Server is listening on port 8000");
 });
