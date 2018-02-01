@@ -1,0 +1,15 @@
+.list-group {
+    text-align: left;
+    margin-inside: 4%;
+    max-height: 60vh;
+    overflow-y: scroll;
+}
+
+.active {
+    color: rgb(255, 255, 255);
+    background-color: rgb(66, 139, 202);
+}
+
+.list-group-item{
+    padding: -6px;
+}
