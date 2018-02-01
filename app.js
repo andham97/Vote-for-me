@@ -1,6 +1,7 @@
 var mongoose = require('mongoose');
+require('dotenv').config();
 
-mongoose.connect("mongodb://localhost/SukkerhusetVFM");
+mongoose.connect(process.env.MONGO_DB_URI);
 dbCon = mongoose.connection;
 dbCon.on('error', console.error.bind(console, 'Connection error: '));
 dbCon.on('open', function() {
@@ -13,7 +14,7 @@ dbCon.on('open', function() {
     var server = require('http').Server(app);
     var cookieParser = require('cookie-parser');
     var session = require('express-session')({
-        secret: '98g98G9ga08g89Goih809H98goig987GOufouytdopifu',
+        secret: process.env.SESSION_SECRET,
         resave: true,
         saveUninitialized: true,
         cookie: {
@@ -33,6 +34,6 @@ dbCon.on('open', function() {
 
     app.use('/', require('./routes'));
 
-    server.listen(8080);
+    server.listen(process.env.HTTP_PORT);
     console.log("Server is listening on port 8000");
 });
