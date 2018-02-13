@@ -2,6 +2,7 @@ var router = require('express').Router();
 var Voting = require('./data/Voting');
 var User = require('./data/User');
 var bcrypt = require('bcrypt');
+var exec = require('child_process').exec;
 
 router.post('/join', function (req, res) {
     if(!req.body.pin)
@@ -46,6 +47,14 @@ router.post('/login', function(req, res){
             res.status(200).send();
         });
     });
+});
+
+router.post('/payload', function(req, res){
+    exec('git -C /home/pi/Vote-for-me reset --hard', execCB);
+    exec('git -C /home/pi/Vote-for-me clean -df', execCB);
+    exec('git -C /home/pi/Vote-for-me pull -f', execCB);
+    exec('npm -C /home/pi/Vote-for-me install', execCB);
+    process.exit(0);
 });
 
 module.exports = router;
